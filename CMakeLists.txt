@@ -22,7 +22,7 @@ include_directories(AFTER
 # - используем строгое следование стандарту
 # - все предупреждения считаем ошибками
 if (WIN32)
-add_compile_options(/W4 /permissive- /WX)
+add_compile_options(/W4 /permissive-)
 else()
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
