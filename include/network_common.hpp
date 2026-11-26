@@ -15,12 +15,17 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
 
 // Определяем нужные типы
+#ifdef _MSC_VER
 using ssize_t = int;     // В Windows этого типа нет
+#endif
 using socket_t = SOCKET; // В Windows тип сокета это обычный дескриптор, но размером с указатель
 using netsize_t = int;   // В Windows функции send и receive принимают тип int 
 

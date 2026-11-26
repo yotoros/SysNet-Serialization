@@ -73,6 +73,28 @@ int main()
         return 1;
     }
 
+    // Спрашиваем у пользователя, каким цветом показывать текст на сервере
+    std::cout << "Choose text color:\n"
+              << "  0 - default\n"
+              << "  1 - red\n"
+              << "  2 - green\n"
+              << "  3 - yellow" << std::endl;
+
+    Color color = Color::DEFAULT;
+    std::getline(std::cin, line);
+    if (line == "1")
+    {
+        color = Color::RED;
+    }
+    else if (line == "2")
+    {
+        color = Color::GREEN;
+    }
+    else if (line == "3")
+    {
+        color = Color::YELLOW;
+    }
+
     std::cout << "Connected, start writing messages!" << std::endl;
 
     while (true)
@@ -86,7 +108,7 @@ int main()
 
         // Отправляем данные на сервер с помощью send
         // В Unix для тех же целей можно использовать write()
-        Data data(line);
+        Data data(line, color);
         try
         {
             data.SendTo(sock);

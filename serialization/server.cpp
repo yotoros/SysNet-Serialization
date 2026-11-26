@@ -80,7 +80,8 @@ int main()
         try
         {
             Data data = Data::ReceiveFrom(client);
-            std::cout << data << std::endl;
+            std::cout << "\033[" << static_cast<int>(data.GetColor()) << "m"
+                      << data.GetLine() << "\033[0m" << std::endl;
         }
         catch ( const std::exception& )
         {
